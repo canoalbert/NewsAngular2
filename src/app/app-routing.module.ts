@@ -8,8 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/news', pathMatch: 'full' },
   { path: 'news', component: NewsListComponent },
   { path: 'add-news', component: AddEditNewsComponent },
-  { path: 'edit-news/:id', component: AddEditNewsComponent },
-  { path: 'delete-news/:id', component: DeleteNewsComponent }
+  { path: 'edit-news/:_id', component: AddEditNewsComponent },
+  { path: 'delete-news/:_id', component: DeleteNewsComponent }
 
 ];
 

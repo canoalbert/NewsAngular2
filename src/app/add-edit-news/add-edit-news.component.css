@@ -1,0 +1,56 @@
+.container {
+  max-width: 600px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+h2 {
+  color: #333333FF;
+  font-size: 1.5em;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  border: 1px solid #CCCCCCFF;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.butonRed {
+  background-color: #ff3333;
+}
+.agregarImagen {
+  background-color: #4caf50;
+}

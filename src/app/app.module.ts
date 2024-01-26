@@ -9,6 +9,7 @@ import { DeleteNewsComponent } from './delete-news/delete-news.component';
 import { AddEditNewsComponent } from './add-edit-news/add-edit-news.component';
 import {NgForOf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NgForOf, HttpClientModule
+    ReactiveFormsModule,
+    NgForOf, HttpClientModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

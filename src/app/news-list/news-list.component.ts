@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsService} from "../services/news.service";
 import {NgbCarouselConfig} from "@ng-bootstrap/ng-bootstrap";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,11 +15,15 @@ export class NewsListComponent implements OnInit {
 
 
 
-  constructor(private newsService: NewsService) {
+  constructor(private newsService: NewsService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.getAllNews();
+  }
+
+  navigateToAddNews() {
+    this.router.navigate(['add-news']);
   }
 
   getAllNews() {
@@ -36,12 +41,16 @@ export class NewsListComponent implements OnInit {
     );
   }
 
-  borar(_id: string) {
+  borrar(_id: string) {
     this.newsService.deleteNews(_id).subscribe(() => {
       this.newsList = this.newsList.filter((news) => news._id !== _id);
     });
     console.log("La noticia ha sido borrada");
 
+  }
+
+  editar(_id: string){
+    this.router.navigate(['edit-news/', _id]);
   }
 }
 

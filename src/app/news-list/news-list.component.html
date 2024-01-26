@@ -1,34 +1,27 @@
+<div class="add-news-button">
+  <button class="botonP" (click)="navigateToAddNews()">Añadir una Noticia</button>
+</div>
+<div class="row card-container">
+  <div class="card" *ngFor="let news of newsList">
 
+<!--    <h5>{{ news._id }}</h5>-->
+    <h5>{{ news.title }}</h5>
+    <p>{{ news.subtitle }}</p>
+    <p>{{ news.section.name }} || {{ news.section.icon }}</p>
+    <ngb-carousel [id]="'carousel-' + news._id" [interval]="2000" [pauseOnFocus]="true" [showNavigationArrows]="false" [showNavigationIndicators]="false">
+      <ng-template ngbSlide *ngFor="let image of news.images; let index = index">
+        <img class="img-card" [src]="image" [alt]="'Slide ' + index">
+      </ng-template>
+    </ngb-carousel>
 
-  <div class="row">
-    <div class="card" *ngFor="let news of newsList">
+    <p>{{ news.author }}</p>
+    <p>Fecha: {{ news.dateFormatted }}</p>
+    <p>{{ news.content }}</p>
 
-        <h5>{{ news._id }}</h5>
-        <h5>{{ news.title }}</h5>
-        <p>{{ news.subtitle }}</p>
-        <p>{{ news.section.name }} ||  {{ news.section.icon }}</p>
-        <p> {{ news.images.length }}</p>
-
-
-
-        <div *ngFor="let image of news.images;let index = index">
-          <ngb-carousel id="carousel" [interval]="2000" [pauseOnFocus]="true">
-            <ng-template ngbSlide>
-              <img  [src]="image" [alt]="'Slide '+index">
-            </ng-template>
-            <ng-template ngbSlide>
-              <img  [src]="image" [alt]="'Slide '+index">
-            </ng-template>
-
-          </ngb-carousel>
-
-        </div>
-
-        <p>{{ news.author }}</p>
-        <p>Fecha:  {{ news.dateFormatted }}</p>
-        <p>{{ news.content }}</p>
-
-        <button (click)="borar(news._id)">Borrar</button>
+    <div class="container">
+      <button class="boton-borrar" (click)="borrar(news._id)">Borrar</button>
+      <button class="boton-editar" (click)="editar(news._id)">Editar</button>
     </div>
 
+  </div>
 </div>
