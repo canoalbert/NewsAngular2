@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import {NewsService} from "../services/news.service";
-import {NgbCarouselConfig} from "@ng-bootstrap/ng-bootstrap";
-import {Router} from "@angular/router";
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NewsService } from "../services/news.service";
+import { NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
+import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
+import { filter } from "rxjs";
 
 @Component({
   selector: 'app-news-list',
   templateUrl: './news-list.component.html',
   styleUrls: ['./news-list.component.css'],
-
 })
 export class NewsListComponent implements OnInit {
   newsList: any[] = [];
+  mostrarConfirmacion = false;
+  newsIdToDelete: string | null = null;
 
 
-
-  constructor(private newsService: NewsService, private router: Router) {
-  }
+  constructor(
+    private newsService: NewsService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getAllNews();
@@ -42,16 +46,27 @@ export class NewsListComponent implements OnInit {
   }
 
   borrar(_id: string) {
-    this.newsService.deleteNews(_id).subscribe(() => {
-      this.newsList = this.newsList.filter((news) => news._id !== _id);
-    });
-    console.log("La noticia ha sido borrada");
-
+    this.newsIdToDelete = _id;
+    this.mostrarConfirmacion = true;
   }
 
+  confirmarBorrar() {
+
+    this.newsService.deleteNews(<string>this.newsIdToDelete).subscribe(() => {
+      this.newsList = this.newsList.filter((news) => news._id !== this.newsIdToDelete);
+    });
+    this.toastr.success('Noticia eliminada correctamente', 'Éxito');
+    console.log("La noticia ha sido eliminada");
+    this.mostrarConfirmacion = false;
+    this.newsIdToDelete = null;
+  }
+
+  cancelarBorrar() {
+    // Cancela el borrado al cerrar el popup de confirmación
+    this.mostrarConfirmacion = false;
+    this.newsIdToDelete = null;
+  }
   editar(_id: string){
     this.router.navigate(['edit-news/', _id]);
   }
 }
-
-

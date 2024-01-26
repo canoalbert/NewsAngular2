@@ -54,7 +54,7 @@ export class AddEditNewsComponent implements OnInit {
         }
       );
     }catch (error){
-      console.error('Error en guardarNoticia:', error);
+      console.error('Error en guardarNoticia: ', error);
     }
   }
 

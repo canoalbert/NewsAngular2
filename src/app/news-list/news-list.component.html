@@ -1,6 +1,27 @@
-<div class="add-news-button">
+<div class="cont add-button">
   <button class="botonP" (click)="navigateToAddNews()">Añadir una Noticia</button>
 </div>
+
+<!-- app.component.html -->
+<div class="popup" *ngIf="mostrarConfirmacion">
+  <div class="row container">
+    <div class="col"><p class="">Confirmación</p></div>
+    <div class="col-1"><button class="boton-cerrar" (click)="cancelarBorrar()">X</button></div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <p>¿Desea aniquilar la noticia?</p>
+      <button class="boton-confirmar" (click)="confirmarBorrar()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <div class="row card-container">
   <div class="card" *ngFor="let news of newsList">
 
@@ -18,10 +39,12 @@
     <p>Fecha: {{ news.dateFormatted }}</p>
     <p>{{ news.content }}</p>
 
+
     <div class="container">
       <button class="boton-borrar" (click)="borrar(news._id)">Borrar</button>
       <button class="boton-editar" (click)="editar(news._id)">Editar</button>
     </div>
+
 
   </div>
 </div>
