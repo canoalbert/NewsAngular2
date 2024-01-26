@@ -9,14 +9,14 @@ import { DeleteNewsComponent } from './delete-news/delete-news.component';
 import { AddEditNewsComponent } from './add-edit-news/add-edit-news.component';
 import {NgForOf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
-import { CarruselComponent } from './carrusel/carrusel.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NewsListComponent,
     DeleteNewsComponent,
-    AddEditNewsComponent,
-    CarruselComponent
+    AddEditNewsComponent
+
   ],
   imports: [
     BrowserModule,

@@ -35,6 +35,14 @@ export class NewsListComponent implements OnInit {
       }
     );
   }
+
+  borar(_id: string) {
+    this.newsService.deleteNews(_id).subscribe(() => {
+      this.newsList = this.newsList.filter((news) => news._id !== _id);
+    });
+    console.log("La noticia ha sido borrada");
+
+  }
 }
 
 

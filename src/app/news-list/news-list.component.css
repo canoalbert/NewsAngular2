@@ -2,3 +2,13 @@ img {
   height: 100px;
   width: 100px;
 }
+
+.card {
+  border-radius: 2rem;
+  height: 500px;
+  width: 300px;
+}
+
+#carousel {
+
+}
