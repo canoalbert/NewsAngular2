@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NewsService } from "../services/news.service";
-import { NgbCarouselConfig } from "@ng-bootstrap/ng-bootstrap";
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
-import { filter } from "rxjs";
+
 
 @Component({
   selector: 'app-news-list',

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Section } from '../../../../news/src/news/interfaces/news/section.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,12 @@ export class NewsService {
 
   getAllNews(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}`);
+  }
+  getAllSections(): Observable<Section[]> {
+    return this.http.get<Section[]>(`http://localhost:3000/sections`);
+  }
+  getSectionById(_id: string): Observable<Section> {
+    return this.http.get<Section>(`${this.apiUrl}/sections/${_id}`);
   }
 
   getNewsById(newsId: string): Observable<any> {

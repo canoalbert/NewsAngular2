@@ -1,38 +1,37 @@
 <div class="container">
   <h2>{{ isNew ? 'Añadir Noticia' : 'Editar Noticia' }}</h2>
 
-  <form (ngSubmit)="guardarNoticia()" #newsForm="ngForm">
+  <form (ngSubmit)="guardarNoticia()" #newsForm="ngForm" *ngIf="new">
 
     <div class="form-group">
       <label for="title">Título:</label>
-      <input type="text" id="title" name="title" [(ngModel)]="news.title" required>
+      <input type="text" id="title" name="title" [(ngModel)]="new.title" required>
     </div>
 
     <div class="form-group">
       <label for="subtitle">Subtítulo:</label>
-      <input type="text" id="subtitle" name="subtitle" [(ngModel)]="news.subtitle" required>
+      <input type="text" id="subtitle" name="subtitle" [(ngModel)]="new.subtitle" required>
     </div>
 
-    <div class="form-group">
-      <label for="section">Sección:</label>
-      <input type="text" id="section" name="section" [(ngModel)]="news.section.name" required>
+    <div class="form-group" >
+      <label>Nombre de la sección:</label>
+      <input type="text" name="section.name" [(ngModel)]="new.section.name" required>
     </div>
 
-    <div class="form-group">
-      <label for="section">Sección:</label>
-      <input type="text" id="section.icon" name="icon" [(ngModel)]="news.section.icon" required>
+    <div class="form-group" >
+      <label>Icono de la sección:</label>
+      <input type="text" name="section.icon" [(ngModel)]="new.section.icon" required>
     </div>
 
     <div class="form-group">
       <label for="content">Contenido:</label>
-      <textarea id="content" name="content" [(ngModel)]="news.content" required></textarea>
+      <textarea id="content" name="content" [(ngModel)]="new.content" required></textarea>
     </div>
 
     <div class="form-group">
       <label for="author">Autor:</label>
-      <input type="text" id="author" name="author" [(ngModel)]="news.author" required>
+      <input type="text" id="author" name="author" [(ngModel)]="new.author" required>
     </div>
-
 
     <div *ngFor="let image of images; let i = index">
       <div class="form-group">
@@ -46,8 +45,4 @@
 
     <button type="submit">{{ isNew ? 'Añadir' : 'Guardar Cambios' }}</button>
   </form>
-  <div>
-
-  </div>
-
 </div>
