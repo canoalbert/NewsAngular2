@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NewsService } from "../services/news.service";
 import { Router } from "@angular/router";
-import { ToastrService } from 'ngx-toastr';
-
+import { ToastrService } from 'ngx-toastr'; // Solo importamos ToastrService
 
 @Component({
   selector: 'app-news-list',
@@ -13,7 +12,6 @@ export class NewsListComponent implements OnInit {
   newsList: any[] = [];
   mostrarConfirmacion = false;
   newsIdToDelete: string | null = null;
-
 
   constructor(
     private newsService: NewsService,
@@ -50,21 +48,23 @@ export class NewsListComponent implements OnInit {
   }
 
   confirmarBorrar() {
-
     this.newsService.deleteNews(<string>this.newsIdToDelete).subscribe(() => {
       this.newsList = this.newsList.filter((news) => news._id !== this.newsIdToDelete);
+      const deletedNewsIndex = this.newsList.findIndex(news => news._id === this.newsIdToDelete);
+      if (deletedNewsIndex !== -1) {
+        this.newsList[deletedNewsIndex].isDeleted = true;
+      }
     });
-    this.toastr.success('Noticia eliminada correctamente', 'Éxito');
-    console.log("La noticia ha sido eliminada");
+    this.toastr.success('Noticia eliminada correctamente', 'Éxito', { timeOut: 2000 });
     this.mostrarConfirmacion = false;
     this.newsIdToDelete = null;
   }
 
   cancelarBorrar() {
-    // Cancela el borrado al cerrar el popup de confirmación
     this.mostrarConfirmacion = false;
     this.newsIdToDelete = null;
   }
+
   editar(_id: string){
     this.router.navigate(['edit-news/', _id]);
   }

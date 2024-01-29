@@ -13,15 +13,25 @@
       <input type="text" id="subtitle" name="subtitle" [(ngModel)]="new.subtitle" required>
     </div>
 
-    <div class="form-group" >
-      <label>Nombre de la sección:</label>
-      <input type="text" name="section.name" [(ngModel)]="new.section.name" required>
+    <div class="form-group">
+      <label>Selecciona una sección:</label>
+      <select name="section" [(ngModel)]="new.section" required>
+        <option *ngFor="let section of sections" [ngValue]="section">{{ section.name }}</option>
+      </select>
     </div>
 
-    <div class="form-group" >
-      <label>Icono de la sección:</label>
-      <input type="text" name="section.icon" [(ngModel)]="new.section.icon" required>
+    <div *ngIf="new.section">
+      <div class="form-group" >
+        <label>Nombre de la sección:</label>
+        <input type="text" name="sectionName" [(ngModel)]="new.section.name" required>
+      </div>
+
+      <div class="form-group" >
+        <label>Icono de la sección:</label>
+        <input type="text" name="sectionIcon" [(ngModel)]="new.section.icon" required>
+      </div>
     </div>
+
 
     <div class="form-group">
       <label for="content">Contenido:</label>
