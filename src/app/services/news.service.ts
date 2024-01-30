@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {Section} from "../interface/section.interface";
+import {News} from "../interface/news.interface";
 
 
 @Injectable({
@@ -9,6 +10,7 @@ import {Section} from "../interface/section.interface";
 })
 export class NewsService {
   private apiUrl = 'http://localhost:3000/news';
+  private apiUrl2 = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) {}
 
@@ -16,14 +18,18 @@ export class NewsService {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
   getAllSections(): Observable<Section[]> {
-    return this.http.get<Section[]>(`http://localhost:3000/sections`);
+    return this.http.get<Section[]>(`${this.apiUrl2}$sections`);
   }
   getSectionById(_id: string): Observable<Section> {
-    return this.http.get<Section>(`${this.apiUrl}/sections/${_id}`);
+    return this.http.get<Section>(`${this.apiUrl2}sections/${_id}`);
   }
 
   getNewsById(newsId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${newsId}`);
+  }
+
+  getNewsBySection(sectionName: string): Observable<News[]> {
+    return this.http.get<News[]>(`${this.apiUrl}/section/${sectionName}`);
   }
 
   addNews(newsData: any): Observable<any> {
