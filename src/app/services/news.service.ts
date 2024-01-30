@@ -31,7 +31,7 @@ export class NewsService {
   }
 
   updateNews(newsId: string, newsData: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${newsId}`, newsData);
+    return this.http.patch<any>(`${this.apiUrl}/${newsId}`, newsData);
   }
 
   deleteNews(newsId: string): Observable<void> {

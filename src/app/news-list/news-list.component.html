@@ -18,7 +18,7 @@
 </div>
 
 <div class="row card-container">
-  <div class="card" *ngFor="let news of newsList">
+  <div class="card col-md-3 " *ngFor="let news of newsList">
     <h5>{{ news.title }}</h5>
     <p>{{ news.subtitle }}</p>
     <p>{{ news.section.name }} || {{ news.section.icon }}</p>

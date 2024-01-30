@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { NewsService } from '../services/news.service';
-import {Section} from "../../../../news/src/news/interfaces/news/section.interface";
+
 import {News} from "../interface/news.interface";
+import {Section} from "../interface/section.interface";
 
 
 @Component({
