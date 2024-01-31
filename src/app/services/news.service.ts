@@ -18,7 +18,7 @@ export class NewsService {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
   getAllSections(): Observable<Section[]> {
-    return this.http.get<Section[]>(`${this.apiUrl2}$sections`);
+    return this.http.get<Section[]>(`${this.apiUrl2}sections`);
   }
   getSectionById(_id: string): Observable<Section> {
     return this.http.get<Section>(`${this.apiUrl2}sections/${_id}`);
